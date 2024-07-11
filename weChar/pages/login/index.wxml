@@ -1,0 +1,27 @@
+<!-- <cu-custom bgColor="bg-gradual-blue">
+  <view slot="content">ColorUI 空白模板</view>
+</cu-custom> -->
+<view class="loginMain">
+  <view class="loginBody">
+    <view class="loginLogin">XINGHE</view>
+    <view class="loginHeadImage">
+      <image src='https://ts3.cn.mm.bing.net/th?id=OIP-C.c43kVbudRWN3-pJYtmfugAAAAA&w=119&h=104&c=7&bgcl=5df9ed&r=0&o=6&dpr=1.3&pid=13.1'></image>
+    </view>
+    <view class="loginForm">
+      <form>
+        <view class="loginFormItem">
+          <view class="loginFormText">账号：</view><input class="loginInput" model:value="{{username}}"/>
+        </view>
+        <view class="loginFormItem">
+          <view class="loginFormText">密码：</view><input class="loginInput" type="{{isPassword ? 'password' : 'text'}}" model:value="{{password}}" autocomplete="off"/>
+        </view>
+        <view class="{{isPassword ? '.cuIcon-attentionfill' : '.cuIcon-attention'}}" bindtap="showPassword" style="width: 75rpx; height: 68rpx; display: block; position: relative; left: 470rpx; top: -70rpx; "></view>
+      </form>
+      <view >
+        <button type="primary" class="loginButton">登录</button><button class="loginButton">注册</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+
