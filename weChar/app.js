@@ -1,5 +1,14 @@
 //app.js
 App({
+
+  getMYTOKEN: function(){
+    return this.globalData.MYTOKEN;
+  },
+
+  getMYURL: function(){
+    return this.globalData.MYURL;
+  },
+
   onLaunch: function() {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
@@ -47,6 +56,8 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    MYTOKEN: '',
+    MYURL: 'http://127.0.0.1:8082'
   }
 })
