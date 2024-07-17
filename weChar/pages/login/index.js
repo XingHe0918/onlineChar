@@ -4,10 +4,8 @@ const app = getApp()
 
 Page({
   data:{
-    formData:{
-      username:"123",
-      password:"123"
-    },
+    username:"xinghe",
+    password:"123",
     isPassword: true,
   },
   showPassword(){
@@ -21,17 +19,23 @@ Page({
       url: app.getMYURL() + "/user/userRegister",
       method: 'POST',
       data:{
-        username: this.data.formData.username,
-        password: this.data.formData.password
+        username: this.data.username,
+        password: this.data.password
       },
       header:{
         'content-type' : 'application/json'
       },
       success(res){
+        app.setRefreshToken(res.data.RefreshToken);
+        app.setAccessToken(res.data.AccessToken);
         console.log(res);
-      },
-      fail(err) {
-        console.error(err);
+        if(res.statusCode == 500 || 400){
+          wx.showToast({
+            title: res.data,
+            icon: 'none',
+            duration: 2000//持续的时间
+          })
+        }
       }
     })
   }

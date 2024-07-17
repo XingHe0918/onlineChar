@@ -42,7 +42,7 @@
     "ignoreUploadUnusedFiles": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.4.2",
+  "libVersion": "3.5.0",
   "appid": "wxec8ff9e4bd6e2217",
   "projectname": "ColorUI-template",
   "debugOptions": {

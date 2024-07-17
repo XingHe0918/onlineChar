@@ -1,8 +1,20 @@
 //app.js
 App({
 
-  getMYTOKEN: function(){
-    return this.globalData.MYTOKEN;
+  getAccessToken: function(){
+    return this.globalData.AccessToken;
+  },
+
+  setAccessToken: function(token){
+    this.globalData.AccessToken = token;
+  },
+
+  getRefreshToken: function(){
+    return this.globalData.RefreshToken;
+  },
+
+  setRefreshToken: function(token){
+    this.globalData.RefreshToken = token;
   },
 
   getMYURL: function(){
@@ -57,7 +69,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    MYTOKEN: '',
+    AccessToken: '',
+    RefreshToken: '',
     MYURL: 'http://127.0.0.1:8082'
   }
 })
