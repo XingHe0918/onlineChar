@@ -1,15 +1,36 @@
-<view class="recovery_other_line">
- <view class="other_text">上传图片</view>
- <view wx:if="{{imageList.length}}" class="choose_upload_view">
-   <view wx:for="{{imageList}}" wx:key="index" class="choose_upload_item">
-   	 <!-- 图片上传展示 -->
-     <image src="{{item}}" class="choose_upload_img" data-index="{{index}}" bindtap="previewBigImage"></image>
-     <!-- 删除按钮 -->
-     <image src="../../res/img/jdRecycleIcon/icon_remove.png" class="remove_img_icon" data-index="{{index}}" catchtap="removeChooseImage"></image>
-   </view>
- </view>
- <!-- 上传按钮 -->
- <view class="other_right other_upload">
-   <image src="../../res/img/jdRecycleIcon/icon_upload.png" class="upload_img" bindtap="chooseImageTap"></image>
- </view>
+
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="content">注册</view>
+</cu-custom>
+<view class="container">
+  <image class="registerPageHeadImage" wx:if="{{imagePath}}" src="{{imagePath}}" bindtap="showActionSheet" mode="aspectFit" />
+</view>
+<view class="registerForm">  
+  <form>
+        <view class="registerFormItem">
+          <view class="registerFormText">账号：</view><input class="registerInput" model:value="{{username}}"/>
+        </view>
+        <view class="registerFormItem">
+          <view class="registerFormText">昵称：</view><input class="registerInput" model:value="{{nickname}}"/>
+        </view>
+        <view class="registerFormItem">
+          <view class="registerFormText">性别：</view><input class="registerInput" model:value="{{gender}}"/>
+        </view>
+        <view class="registerFormItem">
+          <view class="registerFormText">电话：</view><input class="registerInput" model:value="{{phoneNumber}}"/>
+        </view>
+        <view class="registerFormItem">
+          <view class="registerFormText">邮箱：</view><input class="registerInput" model:value="{{email}}"/>
+        </view>
+        <view class="registerFormItem">
+          <view class="registerFormText">地址：</view><input class="registerInput" model:value="{{address}}"/>
+        </view>
+        <view class="registerFormItem">
+          <view class="registerFormText">验证码：</view><input class="registerInput" model:value="{{verificationCode}}"/>
+        </view>
+      </form>
+      <checkbox style="float: left;" class='round' :class="checkbox[1].checked?'checked':''" :checked="checkbox[1].checked?true:false" bindtap="changeIsOk"></checkbox><text style="float: left;">我已阅读并同意</text><navigator style="float: left;" open-type="navigate" url="/pages/AARD/SLA">《软件许可及服务协议》</navigator>
+      <view style="float: left;">
+        <button style="float: left; margin-right: 50px;" bindtap="getVerificationCode">获取验证码</button><button>注册</button>
+      </view>
 </view>

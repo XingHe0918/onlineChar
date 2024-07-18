@@ -1,47 +1,39 @@
-.recovery_other_line {
+.container {
   display: flex;
-  line-height: 124rpx;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  margin-top: 20px;
 }
-.recovery_other_line .upload_img {
-  width: 36rpx;
-  height: 36rpx;
+.cuIcon-back {
+  width: 24px;
+  height: 24px;
+  background-size: contain;
 }
-.recovery_other_line .other_text {
-  width: 150rpx;
-  font-size: 28rpx;
-  color: #000;
-}
-.choose_upload_view {
-  flex: 1;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-.choose_upload_item {
-  margin-left: 38rpx;
-  position: relative;
-  width: 100rpx;
-  display: flex;
-  align-items: center;
-}
-.choose_upload_view .choose_upload_img {
-  width: 100rpx;
-  height: 100rpx;
-}
-.choose_upload_view .remove_img_icon {
-  padding: 4rpx;
-  position:absolute;
-  top: -15rpx;
-  right: -13rpx;
-  width: 28rpx;
-  height: 28rpx;
+.registerPageHeadImage{
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, .5);
+  width: 100px;
+  height: 100px;
 }
-.other_upload {
-  margin-left: 15rpx;
-  width: 80rpx;
+.registerForm{
+  /* border: 1px solid black; */
+  margin-top: 80px;
+  padding: 40px;
+}
+.registerFormText{
+  width: 80px;
+  float: left;
+  margin-top: 5px;
+  font-size: 16px;
+}
+.registerInput{
+  border: 1px solid black;
+  border-radius: 4% 4% 4% 4% / 25% 25% 25% 25% ;
+  height: 35px; /* 设置输入框的高度 */
+  line-height: 50px; /* 设置行高，使文本在输入框中垂直居中 */
+  padding: 0 10px; /* 内边距，使文本与输入框边界有一定距离 */
+  box-sizing: border-box; /* 包括内边距和边框在内进行计算 */
+  /* width: 50%; */
+}
+.registerFormItem{
+  margin-bottom: 10px;
 }

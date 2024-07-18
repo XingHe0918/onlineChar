@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/login/index",
-    "pages/register/index"
+    "pages/register/index",
+    "pages/AARD/SLA"
   ],
   "window": {
     "backgroundTextStyle": "light",

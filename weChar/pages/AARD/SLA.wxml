@@ -1,0 +1,59 @@
+<view class="container">
+  <view class="title">软件许可协议</view>
+    <view class="section">
+      <view class="section-title">1. 许可的授予</view>
+      <view class="section-content">
+        本软件根据本协议条款授予您非排他性、不可转让的使用许可，仅限于您个人使用，不得用于商业目的。
+      </view>
+    </view>
+    <view class="section">
+      <view class="section-title">2. 使用限制</view>
+      <view class="section-content">
+        <text>2.1 您不得修改、反编译、逆向工程、分解或试图发现本软件的源代码。</text>
+        <text>2.2 您不得租赁、出借、再许可或转让本软件或其任何部分。</text>
+        <text>2.3 您不得使用本软件从事任何违法活动。</text>
+      </view>
+    </view>
+    <view class="section">
+      <view class="section-title">3. 知识产权</view>
+      <view class="section-content">
+        本软件及其所有副本的所有权和知识产权归本公司所有。本软件受版权法和国际条约保护。
+      </view>
+    </view>
+    <view class="section">
+      <view class="section-title">4. 免责声明</view>
+      <view class="section-content">
+        本软件按“现状”提供，不提供任何形式的明示或暗示担保，包括但不限于对适销性、特定用途适用性和不侵权的担保。本公司不对因使用或无法使用本软件而导致的任何损害负责。
+      </view>
+    </view>
+    <view class="section">
+      <view class="section-title">5. 责任限制</view>
+      <view class="section-content">
+        在任何情况下，本公司的全部责任不超过您为本软件支付的金额。本公司不对任何间接、偶然、特殊或后果性损害承担责任，即使已被告知可能发生此类损害。
+      </view>
+    </view>
+    <view class="section">
+      <view class="section-title">6. 终止</view>
+      <view class="section-content">
+        如果您违反本协议的任何条款，本公司可以立即终止本协议，您必须销毁本软件的所有副本，并停止使用本软件。
+      </view>
+    </view>
+    <view class="section">
+      <view class="section-title">7. 隐私政策</view>
+      <view class="section-content">
+        您的个人信息将根据我们的隐私政策进行处理，使用本软件即表示您同意我们的隐私政策条款。
+      </view>
+    </view>
+    <view class="section">
+      <view class="section-title">8. 适用法律</view>
+      <view class="section-content">
+        本协议受中华人民共和国法律管辖。如果本协议的任何部分被视为无效或不可执行，其余部分将继续有效。
+      </view>
+    </view>
+    <view class="section">
+      <view class="section-title">9. 修改和更新</view>
+      <view class="section-content">
+        本公司保留在任何时候修改本协议条款的权利，修改后的条款将通过软件更新或其他适当方式通知您。
+      </view>
+    </view>
+</view>

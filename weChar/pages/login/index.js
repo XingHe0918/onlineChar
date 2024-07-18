@@ -8,12 +8,15 @@ Page({
     password:"123",
     isPassword: true,
   },
+
+  //显示密码
   showPassword(){
     this.setData({
       isPassword: !this.data.isPassword
     })
   },
 
+  //用户登录
   userRegister(){
     wx.request({
       url: app.getMYURL() + "/user/userRegister",
@@ -39,6 +42,7 @@ Page({
     })
   },
 
+  //跳转到注册页面
   toRegisterPage(){
     console.log("跳转");
     wx.navigateTo({
