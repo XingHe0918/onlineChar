@@ -28,7 +28,6 @@ Page({
       success(res){
         app.setRefreshToken(res.data.RefreshToken);
         app.setAccessToken(res.data.AccessToken);
-        console.log(res);
         if(res.statusCode == 500 || 400){
           wx.showToast({
             title: res.data,
@@ -37,6 +36,13 @@ Page({
           })
         }
       }
+    })
+  },
+
+  toRegisterPage(){
+    console.log("跳转");
+    wx.navigateTo({
+      url: '/pages/register/index',
     })
   }
   

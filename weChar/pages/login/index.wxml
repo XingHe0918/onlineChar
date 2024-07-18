@@ -18,7 +18,8 @@
         <view class="{{isPassword ? '.cuIcon-attentionfill' : '.cuIcon-attention'}}" bindtap="showPassword" style="width: 75rpx; height: 68rpx; display: block; position: relative; left: 470rpx; top: -70rpx; "></view>
       </form>
       <view >
-        <button type="primary" bindtap="userRegister" class="loginButton">登录</button><button class="loginButton">注册</button>
+        <button type="primary" bindtap="userRegister" class="loginButton">登录</button>
+        <button class="loginButton" bindtap='toRegisterPage'>注册</button>
       </view>
     </view>
   </view>
