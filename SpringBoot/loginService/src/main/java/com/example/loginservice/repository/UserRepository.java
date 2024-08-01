@@ -1,6 +1,6 @@
 package com.example.loginservice.repository;
 
-import com.example.loginservice.model.bean.User;
+import com.example.loginservice.model.dao.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface UserRepository extends MongoRepository<User, Integer> {

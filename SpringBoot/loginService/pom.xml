@@ -30,6 +30,13 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
+
+        <!--redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
         <!--            JWT-->
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -96,6 +103,17 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+<!--        邮箱验证码-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+
     </dependencies>
     <dependencyManagement>
         <dependencies>

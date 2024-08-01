@@ -8,29 +8,40 @@
 <view class="registerForm">  
   <form>
         <view class="registerFormItem">
-          <view class="registerFormText">账号：</view><input class="registerInput" model:value="{{username}}"/>
+          <view class="registerFormText">账号：</view>
+          <input class="registerInput" model:value="{{username}}"/>
         </view>
         <view class="registerFormItem">
-          <view class="registerFormText">昵称：</view><input class="registerInput" model:value="{{nickname}}"/>
+          <view class="registerFormText">昵称：</view>
+          <input class="registerInput" model:value="{{nickname}}"/>
         </view>
         <view class="registerFormItem">
-          <view class="registerFormText">性别：</view><input class="registerInput" model:value="{{gender}}"/>
+          <view class="registerFormText">性别：</view>
+          <input class="registerInput" model:value="{{gender}}"/>
         </view>
         <view class="registerFormItem">
-          <view class="registerFormText">电话：</view><input class="registerInput" model:value="{{phoneNumber}}"/>
+          <view class="registerFormText">电话：</view>
+          <input class="registerInput" model:value="{{phoneNumber}}"/>
         </view>
         <view class="registerFormItem">
-          <view class="registerFormText">邮箱：</view><input class="registerInput" model:value="{{email}}"/>
+          <view class="registerFormText">邮箱：</view>
+          <input class="registerInput" model:value="{{email}}"/>
         </view>
         <view class="registerFormItem">
-          <view class="registerFormText">地址：</view><input class="registerInput" model:value="{{address}}"/>
+          <view class="registerFormText">地址：</view>
+          <input class="registerInput" model:value="{{address}}"/>
         </view>
         <view class="registerFormItem">
-          <view class="registerFormText">验证码：</view><input class="registerInput" model:value="{{verificationCode}}"/>
+          <view class="registerFormText">密码：</view>
+          <input class="registerInput" model:value="{{password}}"/>
+        </view>
+        <view class="registerFormItem">
+          <view class="registerFormText">验证码：</view>
+          <input class="registerInput" model:value="{{verificationCode}}"/>
         </view>
       </form>
       <checkbox style="float: left;" class='round' :class="checkbox[1].checked?'checked':''" :checked="checkbox[1].checked?true:false" bindtap="changeIsOk"></checkbox><text style="float: left;">我已阅读并同意</text><navigator style="float: left;" open-type="navigate" url="/pages/AARD/SLA">《软件许可及服务协议》</navigator>
       <view style="float: left;">
-        <button style="float: left; margin-right: 50px;" bindtap="getVerificationCode">获取验证码</button><button>注册</button>
+        <button style="float: left; margin-right: 50px;" bindtap="getVerificationCode">获取验证码</button><button bindtap="submitForm">注册</button>
       </view>
 </view>

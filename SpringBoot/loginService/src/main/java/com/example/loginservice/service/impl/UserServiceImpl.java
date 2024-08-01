@@ -4,9 +4,13 @@ package com.example.loginservice.service.impl;
 
 import com.example.loginservice.config.UidGeneratorConfig;
 import com.example.loginservice.jwt.JwtTokenUtil;
-import com.example.loginservice.model.bean.User;
+import com.example.loginservice.model.dao.User;
+import com.example.loginservice.model.dao.UserDetail;
+import com.example.loginservice.model.vo.UserVO;
+import com.example.loginservice.repository.UserDetailRepository;
 import com.example.loginservice.repository.UserRepository;
 import com.example.loginservice.service.UserService;
+import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +26,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserDetailRepository userDetailRepository;
+
+    @Autowired
+    private QQEmailServiceImpl qqEmailService;
+    @Autowired
+    private RedisServiceImpl redisService;
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
@@ -44,7 +57,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         }
         // 获取用户的角色，并转换为GrantedAuthority对象
         List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(user.getPrivilege()));
+        authorities.add(new SimpleGrantedAuthority(user.getRole()));
 
         // 创建UserDetails对象并设置用户名、密码和权限
         UserDetails userDetails = new org.springframework.security.core.userdetails.User(
@@ -78,20 +91,63 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 
     @Override
-    public ResponseEntity<?> addUser(User user) {
-        if(userRepository.existsByUsername(user.getUsername())){
+    public ResponseEntity<?> addUser(UserVO userVO) {
+        System.out.println(userVO.getHeadImage());
+        //验证码校验
+//        if(!redisService.getValue(userVO.getEmail()).equals(userVO.getVerificationCode())){
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Verification code is incorrect");
+//        }
+        //用户名密码校验
+        if(userVO.getUsername() == null || userVO.getUsername().isEmpty() || userVO.getPassword() == null || userVO.getPassword().isEmpty()){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username or password cannot be empty");
+        }
+
+        //用户是否存在校验
+        if(
+                userRepository.existsByUsername(userVO.getUsername())
+//                || userDetailRepository.existsByUsername(user.getUsername())
+        ){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username already exists.");
         }
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encryptPassword = passwordEncoder.encode(user.getPassword());
+        String encryptPassword = passwordEncoder.encode(userVO.getPassword());
+        //id生成
+        Long id = uidGeneratorConfig.nextId();
+
+        //sql插入
         userRepository.save(
                 new User(
-                        uidGeneratorConfig.nextId(),
-                        user.getUsername(),
+                        id,
+                        userVO.getUsername(),
                         encryptPassword,
                         "ROLE_USER",
                         "0"));
+        userDetailRepository.save(
+                new UserDetail(userVO, id)
+        );
         return ResponseEntity.ok("User registered successfully");
+    }
+
+    @Override
+    public ResponseEntity<?> getVerificationCode(String email) {
+        //校验邮箱格式
+        String regex = "^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$";
+        if(!email.matches(regex)){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid email format");
+        }
+        if(email != null && !email.isEmpty()){
+            if(redisService.hasKey(email)){
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body("Verification code already sent, please check your email");
+            }
+            String code = RandomStringUtils.randomNumeric(6);
+            redisService.setValueAndExpire(email, code, 5 * 60, TimeUnit.SECONDS);
+            qqEmailService.sendSimpleEmail(email, "Verification Code", "Your verification code is: " + code);
+            // TODO: Send verification code to email
+            return ResponseEntity.ok("Verification code sent to email");
+        }else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email is required");
+        }
     }
 
 
