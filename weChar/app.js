@@ -71,6 +71,6 @@ App({
     userInfo: null,
     AccessToken: '',
     RefreshToken: '',
-    MYURL: 'http://127.0.0.1:8082'
+    MYURL: 'http://127.0.0.1:8080'
   }
 })

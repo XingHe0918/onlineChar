@@ -19,7 +19,7 @@ Page({
   //用户登录
   userRegister(){
     wx.request({
-      url: app.getMYURL() + "/user/userRegister",
+      url: app.getMYURL() + "/login-service/userRegister",
       method: 'POST',
       data:{
         username: this.data.username,

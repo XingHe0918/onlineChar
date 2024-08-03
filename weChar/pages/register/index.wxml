@@ -3,7 +3,7 @@
   <view slot="content">注册</view>
 </cu-custom>
 <view class="container">
-  <image class="registerPageHeadImage" wx:if="{{imagePath}}" src="{{imagePath}}" bindtap="showActionSheet" mode="aspectFit" />
+  <image class="registerPageHeadImage" wx:if="{{imagePath}}" src="{{imagePath}}" bindtap="image_click" mode="aspectFit" />
 </view>
 <view class="registerForm">  
   <form>
